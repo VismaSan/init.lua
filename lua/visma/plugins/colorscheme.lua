@@ -4,11 +4,3 @@ return {
 		vim.cmd("colorscheme rose-pine-main")
 	end
 }
-
---return {
---    "ellisonleao/gruvbox.nvim",
---    priority = 1000,
---    config = funtion()
---        vim.cmd("colorscheme gruvbox")
---    end
---}
