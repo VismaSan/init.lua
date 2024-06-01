@@ -19,10 +19,13 @@ return {
         -- Communication from nvim to LSP: setup all languages separately
         "neovim/nvim-lspconfig",
         config = function()
+            local capabilities = require('cmp_nvim_lsp').default_capabilities()
             local lspconfig = require("lspconfig")
 
             lspconfig.lua_ls.setup({})
-            lspconfig.csharp_ls.setup({})
+            lspconfig.csharp_ls.setup({
+                capabilities = capabilities
+            })
 
             -- :h vim.lsp.buf -> command to show all available lsp actions
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
