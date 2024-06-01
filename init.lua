@@ -1,6 +1,7 @@
 require("visma")
 
--- TODO: leap plugin: to jump to any place in the file
+-- leap plugin: to jump to any place in the file
+-- todo plugin
 -- vim-test
 -- vim-tmux-navigator
 -- GoTo definition
@@ -10,4 +11,5 @@ require("visma")
 -- renaming
 -- make terminal dimensions bigger
 -- copilot
--- nvim-lualine/lualine.nvim <-- for git info and file name
+-- nvim-lualine/lualine.nvim <-- for git info and file name 
+-- spector plugin (for global search & replace)
