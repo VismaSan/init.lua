@@ -11,7 +11,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "csharp_ls" }
+                ensure_installed = { "lua_ls", "csharp_ls", "eslint", "dockerls", "jsonls" }
             })
         end
     },
@@ -21,7 +21,7 @@ return {
         config = function()
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
             local lspconfig = require("lspconfig")
-            local language_servers = { 'lua_ls', 'csharp_ls' }
+            local language_servers = { 'lua_ls', 'csharp_ls', 'eslint', 'dockerls', 'jsonls' }
 
             for _, lsp in ipairs(language_servers) do
                 lspconfig[lsp].setup {

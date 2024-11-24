@@ -14,5 +14,8 @@ return {
             adaptive_size = true
         }
     }
+    require("nvim-web-devicons").setup {
+        default = true
+    }
   end
 }
