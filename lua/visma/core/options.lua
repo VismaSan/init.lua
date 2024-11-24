@@ -1,5 +1,4 @@
 local opt = vim.opt
-local cmd = vim.cmd
 
 -- line numbers
 opt.relativenumber = true
@@ -22,6 +21,7 @@ opt.smartcase = true
 -- appearance
 opt.termguicolors = true
 opt.signcolumn = "yes"
+vim.o.scrolloff = 999
 -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
