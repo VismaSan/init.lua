@@ -1,6 +1,6 @@
 return {
-	"rose-pine/neovim",
+	"catppuccin/nvim",
 	config = function()
-		vim.cmd("colorscheme rose-pine-main")
+		vim.cmd("colorscheme catppuccin-macchiato")
 	end
 }
