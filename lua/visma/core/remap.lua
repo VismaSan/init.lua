@@ -5,6 +5,10 @@ keymap.set("n", "<leader>x", "<ESC>")
 keymap.set("n", "<leader>w", ":w<CR>")
 keymap.set("n", "<leader>q", ":q<CR>")
 keymap.set("n", "<leader>Q", ":bd<CR>")
+keymap.set("n", "<localleader>h", "<C-w>h", { desc = "Window left" })
+keymap.set("n", "<localleader>l", "<C-w>l", { desc = "Window right" })
+keymap.set("n", "<localleader>j", "<C-w>j", { desc = "Window down" })
+keymap.set("n", "<localleader>k", "<C-w>k", { desc = "Window up" })
 
 keymap.set("n", "<leader>nh", ":nohl<CR>") -- clear search highlights
 keymap.set("n", "x", '"_x') -- deletes one key (without copying it)
