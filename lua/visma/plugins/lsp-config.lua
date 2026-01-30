@@ -11,39 +11,51 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "csharp_ls", "eslint", "dockerls", "jsonls" }
+                ensure_installed = { "lua_ls", "omnisharp", "eslint", "dockerls", "jsonls", "ts_ls" }
             })
         end
     },
     {
-        -- Communication from nvim to LSP: setup all languages separately
         "neovim/nvim-lspconfig",
-        config = function()
-            local capabilities = require('cmp_nvim_lsp').default_capabilities()
-            -- local lspconfig = require("lspconfig")
+        config = function ()
             vim.lsp.config('*', {
-                capabilities = require('cmp_nvim_lsp').default_capabilities,
+                capabilities = require('cmp_nvim_lsp').default_capabilities(),
             })
-            local language_servers = { 'lua_ls', 'csharp_ls', 'eslint', 'dockerls', 'jsonls' }
+            local language_servers = { 'lua_ls', 'omnisharp', 'eslint', 'dockerls', 'jsonls', 'ts_ls' }
+           vim.lsp.enable(language_servers)
 
-            for _, lsp in ipairs(language_servers) do
-                vim.lsp.enable(lsp)
-                -- lspconfig[lsp].setup {
-                --     capabilities = capabilities
-                -- }
-            end
-
-            -- :h vim.lsp.buf -> command to show all available lsp actions
-            vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
-            vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {})
-            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
-            vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, {})
-
-            --vim.keymap.set('n', 'D', vim.lsp.buf.type_definition, {}) -> open in floating view not new buf
-            -- vim.keymap.set('n', '<leader>rr', vim.lsp.buf.rename, {})
-            -- references({context}, {options})
-            -- type_definition({options})
+           vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
+           vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {})
+           vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
+           vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
+           vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, {})
         end
     }
+    --{
+    --    -- Communication from nvim to LSP: setup all languages separately
+    --    "neovim/nvim-lspconfig",
+    --    config = function()
+    --        -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    --        vim.lsp.config('*', {
+    --            capabilities = require('cmp_nvim_lsp').default_capabilities(),
+    --        })
+    --        local language_servers = { 'lua_ls', 'csharp_ls', 'eslint', 'dockerls', 'jsonls' }
+
+    --        -- for _, lsp in ipairs(language_servers) do
+    --        --     vim.lsp.enable(lsp)
+    --        -- end
+
+    --        -- :h vim.lsp.buf -> command to show all available lsp actions
+    --        vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
+    --        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {})
+    --        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
+    --        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
+    --        vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, {})
+
+    --        --vim.keymap.set('n', 'D', vim.lsp.buf.type_definition, {}) -> open in floating view not new buf
+    --        -- vim.keymap.set('n', '<leader>rr', vim.lsp.buf.rename, {})
+    --        -- references({context}, {options})
+    --        -- type_definition({options})
+    --    end
+    --}
 }

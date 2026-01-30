@@ -29,3 +29,8 @@ keymap.set("n", "<leader>Tp", ":tabp<CR>") -- previous tab
 
 -- INSERT mode
 keymap.set("i", "jk", "<ESC>")
+
+-- VISUAL mode
+keymap.set('v', '<C-c>', '"+y', { desc = 'Copy to system clipboard' })
+keymap.set('v', '<C-v>', '"+p', { desc = 'Paster from system clipboard' })
+keymap.set('v', '<C-v>', '<C-r>+', { desc = 'Paster from system clipboard' })
