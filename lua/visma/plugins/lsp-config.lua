@@ -31,31 +31,26 @@ return {
            vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, {})
         end
     }
-    --{
-    --    -- Communication from nvim to LSP: setup all languages separately
-    --    "neovim/nvim-lspconfig",
-    --    config = function()
-    --        -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
-    --        vim.lsp.config('*', {
-    --            capabilities = require('cmp_nvim_lsp').default_capabilities(),
-    --        })
-    --        local language_servers = { 'lua_ls', 'csharp_ls', 'eslint', 'dockerls', 'jsonls' }
+-- -- lua/plugins/csharp.lua (example)
+-- return {
+--   {
+--     "neovim/nvim-lspconfig",
+--     dependencies = {
+--       "williamboman/mason.nvim",
+--       "williamboman/mason-lspconfig.nvim",
+--     },
+--     config = function()
+--       require("mason").setup()
+--       require("mason-lspconfig").setup({
+--         ensure_installed = { "omnisharp" },
+--       })
 
-    --        -- for _, lsp in ipairs(language_servers) do
-    --        --     vim.lsp.enable(lsp)
-    --        -- end
-
-    --        -- :h vim.lsp.buf -> command to show all available lsp actions
-    --        vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
-    --        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {})
-    --        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-    --        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
-    --        vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, {})
-
-    --        --vim.keymap.set('n', 'D', vim.lsp.buf.type_definition, {}) -> open in floating view not new buf
-    --        -- vim.keymap.set('n', '<leader>rr', vim.lsp.buf.rename, {})
-    --        -- references({context}, {options})
-    --        -- type_definition({options})
-    --    end
-    --}
+--       local lspconfig = require("lspconfig")
+--       lspconfig.omnisharp.setup({
+--         -- If you use cmp, you may want capabilities here
+--         -- capabilities = require("cmp_nvim_lsp").default_capabilities(),
+--       })
+--     end,
+--   },
+-- }
 }
