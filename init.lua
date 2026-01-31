@@ -1,3 +1,5 @@
+-- using plugin store :Lazy
+-- using package manager :Mason
 require("visma")
 
 -- leap plugin: to jump to any place in the file
@@ -7,6 +9,7 @@ require("visma")
 -- GoTo definition
 -- GoTo implementation
 -- references / usings
+-- DAP (debbugers)
 -- code formatting (lets say after braces)
 -- renaming
 -- make terminal dimensions bigger
