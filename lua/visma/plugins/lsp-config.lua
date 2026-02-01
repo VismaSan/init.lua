@@ -21,6 +21,11 @@ return {
             vim.lsp.config('*', {
                 capabilities = require('cmp_nvim_lsp').default_capabilities(),
             })
+            vim.lsp.config('omnisharp', {
+                enable_roslyn_analyzers = true,
+                organize_imports_on_format = true,
+                enable_import_completion = true
+            })
             local language_servers = { 'lua_ls', 'omnisharp', 'eslint', 'dockerls', 'jsonls', 'ts_ls' }
             vim.lsp.enable(language_servers)
 
@@ -30,7 +35,7 @@ return {
             vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
             vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {})
         end
-    }
+    },
     -- -- lua/plugins/csharp.lua (example)
     -- return {
     --   {
