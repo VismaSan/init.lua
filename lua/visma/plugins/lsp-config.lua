@@ -24,11 +24,13 @@ return {
             vim.lsp.config('omnisharp', {
                 enable_roslyn_analyzers = true,
                 organize_imports_on_format = true,
-                enable_import_completion = true
+                enable_import_completion = true,
+                enable_editorconfig_support = true,
             })
             local language_servers = { 'lua_ls', 'omnisharp', 'eslint', 'dockerls', 'jsonls', 'ts_ls' }
             vim.lsp.enable(language_servers)
 
+            vim.keymap.set('n', 'gl', vim.diagnostic.open_float)
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
             vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {})
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})

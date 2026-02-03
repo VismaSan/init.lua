@@ -10,6 +10,27 @@ opt.shiftwidth = 4
 opt.expandtab = true
 opt.autoindent = true
 
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.lsp.foldexpr()"
+opt.foldlevelstart = 99
+
+-- language specific rules
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "javascript", "typescript", "json", "yaml" },
+    callback = function()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.shiftwidth = 2
+    end
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "cs", "csharp", "java", "cpp", "c" },
+    callback = function()
+        vim.opt_local.tabstop = 4
+        vim.opt_local.shiftwidth = 4
+    end
+})
+
 -- line wrapping
 opt.wrap = false
 opt.cursorline = true
