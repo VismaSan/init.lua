@@ -17,6 +17,8 @@ keymap.set("n", "<leader>-", "<C-x>")      -- descrease number
 keymap.set("n", "<leader>z", "za")         -- toggle fold
 keymap.set("n", "<leader>m", "zM")         -- close all
 keymap.set("n", "<leader>r", "zR")         -- open all
+keymap.set("n", "<leader>p", "<C-o>")      -- jump to previous cursor position
+-- keymap.set("n", "<leader>n", "<C-i>")   -- jump to next cursor position
 
 -- split
 keymap.set("n", "<leader>sv", "<C-w>v")     -- split window vertically
