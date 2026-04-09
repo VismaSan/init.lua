@@ -8,10 +8,11 @@ return {
     },
     {
         -- LSP config: installing language servers on machine
+        -- C# is handled by roslyn.nvim (see roslyn.lua), not listed here
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "omnisharp", "eslint", "dockerls", "jsonls", "ts_ls" }
+                ensure_installed = { "lua_ls", "eslint", "dockerls", "jsonls", "ts_ls" }
             })
         end
     },
@@ -21,14 +22,19 @@ return {
             vim.lsp.config('*', {
                 capabilities = require('cmp_nvim_lsp').default_capabilities(),
             })
-            vim.lsp.config('omnisharp', {
-                enable_roslyn_analyzers = true,
-                organize_imports_on_format = true,
-                enable_import_completion = true,
-                enable_editorconfig_support = true,
-            })
-            local language_servers = { 'lua_ls', 'omnisharp', 'eslint', 'dockerls', 'jsonls', 'ts_ls' }
+
+            local language_servers = { 'lua_ls', 'eslint', 'dockerls', 'jsonls', 'ts_ls' }
             vim.lsp.enable(language_servers)
+
+            -- Enable inlay hints for every LSP that supports them
+            vim.api.nvim_create_autocmd("LspAttach", {
+                callback = function(args)
+                    local client = vim.lsp.get_client_by_id(args.data.client_id)
+                    if client and client.supports_method("textDocument/inlayHint") then
+                        vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+                    end
+                end,
+            })
 
             vim.keymap.set('n', 'gl', vim.diagnostic.open_float)
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
@@ -38,26 +44,4 @@ return {
             vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {})
         end
     },
-    -- -- lua/plugins/csharp.lua (example)
-    -- return {
-    --   {
-    --     "neovim/nvim-lspconfig",
-    --     dependencies = {
-    --       "williamboman/mason.nvim",
-    --       "williamboman/mason-lspconfig.nvim",
-    --     },
-    --     config = function()
-    --       require("mason").setup()
-    --       require("mason-lspconfig").setup({
-    --         ensure_installed = { "omnisharp" },
-    --       })
-
-    --       local lspconfig = require("lspconfig")
-    --       lspconfig.omnisharp.setup({
-    --         -- If you use cmp, you may want capabilities here
-    --         -- capabilities = require("cmp_nvim_lsp").default_capabilities(),
-    --       })
-    --     end,
-    --   },
-    -- }
 }

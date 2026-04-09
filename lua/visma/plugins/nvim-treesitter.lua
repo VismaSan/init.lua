@@ -4,7 +4,7 @@ return {
     build = ":TSUpdate",
     config = function()
         require('nvim-treesitter').setup {
-            ensure_installed = { "lua", "c_sharp" },
+            ensure_installed = { "lua", "c_sharp", "xml" },
             auto_install = true,
             highlight = {
                 enable = true,

@@ -26,15 +26,15 @@ return {
                     name = "Launch - netcoredbg",
                     request = "launch",
                     program = function()
-                        -- points at your compiled dll (Debug)
-
-                        return vim.fn.input(
-                            "Path to dll: ",
-                            vim.fn.getcwd() .. "/bin/Debug/",
-                            "file"
-                        )
+                        -- Default points at the .NET 10 TFM output folder.
+                        -- Adjust "net10.0" if targeting a different framework.
+                        local default = vim.fn.getcwd()
+                            .. "/bin/Debug/net10.0/"
+                            .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+                            .. ".dll"
+                        return vim.fn.input("Path to dll: ", default, "file")
                     end,
-                    cwd = vim.fn.getcwd(),
+                    cwd = "${workspaceFolder}",
                 },
                 {
                     type = "coreclr",
