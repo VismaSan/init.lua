@@ -23,12 +23,15 @@ After pulling this config, do the following inside Neovim:
 
 ## Features
 
-### Language Server — Roslyn LSP (`roslyn.nvim`)
+### Language Server — OmniSharp
 
-**Plugin:** `seblj/roslyn.nvim`  
-**File:** `lua/visma/plugins/roslyn.lua`
+**File:** `lua/visma/plugins/lsp-config.lua`
 
-Replaces OmniSharp with the same Roslyn language server used by Visual Studio. Provides:
+> **Note:** `seblj/roslyn.nvim` (the VS Code Roslyn LSP) was tested but crashes on WSL
+> due to a stack overflow in `DefaultFileChangeWatcher`. OmniSharp is used instead —
+> it uses the same Roslyn compiler internally and is stable on Linux/WSL.
+
+OmniSharp provides:
 - Full C# / .NET 10 IntelliSense
 - Go-to-definition, references, rename, code actions
 - Real-time Roslyn analyzer diagnostics
@@ -83,12 +86,12 @@ Supports xUnit, NUnit, and MSTest. Requires `dotnet` on PATH.
 
 | Keymap | Action |
 |--------|--------|
-| `<leader>tt` | Run nearest test |
+| `<leader>tr` | Run nearest test |
 | `<leader>tf` | Run all tests in current file |
 | `<leader>td` | Debug nearest test (uses DAP) |
 | `<leader>tS` | Stop running test |
 | `<leader>ts` | Toggle test summary panel |
-| `<leader>to` | Open test output |
+| `<leader>tq` | Open test output |
 | `<leader>tO` | Toggle output panel |
 
 ---
@@ -114,10 +117,10 @@ Active only in `.cs` buffers. Opens results in a floating terminal.
 
 | File type | Formatter |
 |-----------|-----------|
-| `.cs` | `csharpier` (install: `dotnet tool install -g csharpier`) |
+| `.cs` | `dotnet format` (built into the .NET SDK, no install needed) |
 | `.xml` / `.csproj` / `.props` | `xmllint` (install: `sudo apt install libxml2-utils`) |
 
-Format on save is enabled with a 2-second timeout.
+Format on save is **disabled**. Trigger manually with `<leader>mp` (conform default) or `:ConformFormat`.
 
 ---
 

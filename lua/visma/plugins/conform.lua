@@ -5,10 +5,18 @@ return {
             formatters_by_ft = {
                 cs  = { "csharpier" },
                 -- xmllint formats .csproj / .props / .targets
-                -- Requires: sudo apt install libxml2-utils  (Ubuntu/WSL)
+                -- Requires: sudo apt install libxml2-utils
                 xml = { "xmllint" },
             },
-            format_on_save = { timeout_ms = 2000, lsp_fallback = true },
+            formatters = {
+                -- Override the built-in csharpier to always pass --stdin-path.
+                -- The built-in omits it for global installs, causing a hang.
+                csharpier = {
+                    command = "csharpier",
+                    args = { "format", "--stdin-path", "$FILENAME" },
+                    stdin = true,
+                },
+            },
         },
     },
 }

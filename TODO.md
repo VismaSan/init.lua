@@ -3,7 +3,7 @@
 ## Improvements
 
 - [x] Create this TODO file
-- [x] Switch OmniSharp → roslyn.nvim (Roslyn LSP — better .NET 10 support)
+- [x] Switch OmniSharp → roslyn.nvim (reverted: Roslyn LSP crashes on WSL, OmniSharp restored)
 - [x] Add global inlay hints via LspAttach autocmd
 - [x] Fix DAP launch path for .NET 10 TFM (`bin/Debug/net10.0/`)
 - [x] Add XML treesitter parser for `.csproj` / `.sln` files
