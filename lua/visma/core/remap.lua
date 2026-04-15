@@ -32,6 +32,9 @@ keymap.set("n", "<leader>Tx", ":tabclose<CR>") -- close tab
 keymap.set("n", "<leader>Tn", ":tabn<CR>")     -- next tab
 keymap.set("n", "<leader>Tp", ":tabp<CR>")     -- previous tab
 
+-- NORMAL mode
+keymap.set('n', '<localleader>b', "<C-^>")      -- jump to previous buffer
+
 -- VISUAL mode
 keymap.set('v', '<C-c>', '"+y', { desc = 'Copy to system clipboard' })
 keymap.set('v', '<C-v>', '"+p', { desc = 'Paster from system clipboard' })
