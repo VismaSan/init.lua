@@ -1,7 +1,13 @@
 return {
     "nvim-lualine/lualine.nvim",
-    opts = {
-        theme = "everforest",
-        globalstatus = true,
-    }
+    config = function()
+        local theme = require("lualine.themes.everforest")
+        theme.normal.a.bg = "#89b4fa"
+        require("lualine").setup({
+            options = {
+                theme = theme,
+                globalstatus = true,
+            },
+        })
+    end,
 }
